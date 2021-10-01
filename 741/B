@@ -1,0 +1,92 @@
+#include "bits/stdc++.h"
+using namespace std;
+
+#define ll long long
+#define inf ((ll)1e18 + 1)
+#define ii pair<int,int>
+#define minheap(T) priority_queue<T, vector<T>, greater<T>>
+#define maxheap(T) priority_queue<T>
+#define fi first
+#define se second
+#define vi vector<int>
+#define vvi vector<vi>
+#define pb push_back
+#define ppb pop_back
+#define rep(i,a,b) for (i=(a);i<(b);++i)
+#define nrep(i,a,b) for (i=(a);i>(b);--i)
+#define chk(x) cout << (#x) << " is " << (x) << endl;
+#define chk2(x, y) cout << (x) << " " << (y) << endl;
+#define chkp(x) chk2(x.first, x.second);
+#define chk3(x, y, z) cout << (x) << " " << (y) << " " << (z) << endl;
+#define nl cout << endl;
+
+void solve() {
+    int t, k, i;
+    string n;
+    bool done;
+    cin >> t;
+
+    while (t--) {
+        done = false;
+        cin >> k >> n;
+
+        for (i = 0; i < k; ++i) {
+            if (n[i] != '2' && n[i] != '3' && n[i] != '5' && n[i] != '7') {
+                done = true;
+                cout << 1 << endl << n[i] << endl;
+                break;
+            }
+        }
+
+        if (done)
+            continue;
+
+        for (i = 1; i < k; ++i) {
+            if (n[i] == '2' || n[i] == '5') {
+                done = true;
+                cout << 2 << endl << n[0] << n[i] << endl;
+                break;
+            }
+        }
+
+        if (done)
+            continue;
+
+        if (n[0] == '2' || n[0] == '5')
+            for (i = 1; i < k; ++i) {
+                if (n[i] == '7') {
+                    done = true;
+                    cout << 2 << endl << n[0] << n[i] << endl;
+                    break;
+                }
+            }
+
+        if (done)
+            continue;
+
+        for (i = 1; i < k; ++i) {
+            if (n[i-1] == n[i]) {
+                done = true;
+                cout << 2 << endl << n[i-1] << n[i] << endl;
+                break;
+            }
+        }
+
+        if (done)
+            continue;
+
+        cout << 2 << endl << n[0] << n[2] << endl;
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+    solve();
+    return 0;
+}
