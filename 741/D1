@@ -1,0 +1,58 @@
+#include "bits/stdc++.h"
+using namespace std;
+
+#define ll long long
+#define inf ((ll)1e18 + 1)
+#define ii pair<int,int>
+#define minheap(T) priority_queue<T, vector<T>, greater<T>>
+#define maxheap(T) priority_queue<T>
+#define fi first
+#define se second
+#define vi vector<int>
+#define vvi vector<vi>
+#define pb push_back
+#define ppb pop_back
+#define rep(i,a,b) for (i=(a);i<(b);++i)
+#define nrep(i,a,b) for (i=(a);i>(b);--i)
+#define chk(x) cout << (#x) << " is " << (x) << endl;
+#define chk2(x, y) cout << (x) << " " << (y) << endl;
+#define chk3(x, y, z) cout << (x) << " " << (y) << " " << (z) << endl;
+#define chkp(x) chk2(x.first, x.second);
+#define nl cout << endl;
+
+void solve() {
+    string s;
+    int t, n, q, i, l, r;
+    cin >> t;
+
+    while (t--) {
+        cin >> n >> q >> s;
+        vector<int> dp(n+1, 0);
+
+        for (i = 0; i < n; ++i)
+            dp[i+1] = dp[i] + (s[i] == '-' ? -1 : 1) * (1 - 2 * (i & 1));
+
+        while (q--) {
+            cin >> l >> r;
+            i = abs(dp[r] - dp[l-1]);
+
+            if (i == 0) cout << 0;
+            else if (i&1) cout << 1;
+            else cout << 2;
+
+            cout << endl;
+        }
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+    solve();
+    return 0;
+}

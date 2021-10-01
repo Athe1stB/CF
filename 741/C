@@ -1,0 +1,52 @@
+#include "bits/stdc++.h"
+using namespace std;
+
+#define ll long long
+#define inf ((ll)1e18 + 1)
+#define ii pair<int,int>
+#define minheap(T) priority_queue<T, vector<T>, greater<T>>
+#define maxheap(T) priority_queue<T>
+#define fi first
+#define se second
+#define vi vector<int>
+#define vvi vector<vi>
+#define pb push_back
+#define ppb pop_back
+#define rep(i,a,b) for (i=(a);i<(b);++i)
+#define nrep(i,a,b) for (i=(a);i>(b);--i)
+#define chk(x) cout << (#x) << " is " << (x) << endl;
+#define chk2(x, y) cout << (x) << " " << (y) << endl;
+#define chkp(x) chk2(x.first, x.second);
+#define chk3(x, y, z) cout << (x) << " " << (y) << " " << (z) << endl;
+#define nl cout << endl;
+
+void solve() {
+    int t, n, i;
+    string s;
+    cin >> t;
+
+    while (t--) {
+        cin >> n >> s;
+
+        for (i = 0; i < n && s[i] == '1'; ++i);
+
+        if (i == n)
+            cout << 1 << " " << n-1 << " " << 2 << " " << n << endl;
+        else if (n-i-1 >= n/2)
+            cout << i+2 << " " << n << " " << i+1 << " " << n << endl;
+        else
+            cout << 1 << " " << i+1 << " " << 1 << " " << i << endl;
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+    solve();
+    return 0;
+}
